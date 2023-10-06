@@ -24,7 +24,7 @@ class AudioWorkletFetchWorker extends AudioWorkletProcessor {
         await readable.pipeTo(
           new WritableStream({
             start: () => {
-              console.log("Start reading/writing fetch response stream transferred from SharedWorker", this.writes);
+              console.log("Start reading/writing fetch response stream", this.writes);
             },
             write: (value) => {
               // We might only get 1 to 2 writes on file: protocol
