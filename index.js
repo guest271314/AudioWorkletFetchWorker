@@ -11,10 +11,6 @@ try {
   ac.onstatechange = (e) => {
     console.log(e.type, ac.state);
   };
-  const workerPort = worker.port;
-  worker.port.onmessage = (e) => {
-    console.log(e);
-  };
   worker.onerror = (e) => {
     console.error(e.message);
   };
@@ -27,12 +23,11 @@ try {
     throw e;
   };
   aw.connect(ac.destination);
-  aw.port.postMessage(null, [workerPort]);
+  aw.port.postMessage(null, [worker.port]);
   aw.port.onmessage = async (e) => {
     console.log(e.data);
     aw.disconnect();
     aw.port.close();
-    workerPort.close();
     await ac.close();
   };
 } catch (e) {
