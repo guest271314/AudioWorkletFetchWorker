@@ -1,7 +1,8 @@
 # AudioWorkletFetchWorker
 Control Fetch in SharedWorker from and stream data to AudioWorklet
 
-**Firefox** 
+**Firefox**
+
 Set `media.autoplay.block-webaudio` to	`false` for `AudioContext` to run without user action.
 
 # License
