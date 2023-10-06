@@ -8,13 +8,6 @@ try {
     name: "audio-worklet-fetch-worker",
     type: "module",
   });
-  /*
-  const bc = new BroadcastChannel("worker");
-  bc.addEventListener("message", (e) => {
-    console.log(e.data);
-    //bc.postMessage("BroadcastChannel");
-  });
-  */
   ac.onstatechange = (e) => {
     console.log(e.type, ac.state);
   };
