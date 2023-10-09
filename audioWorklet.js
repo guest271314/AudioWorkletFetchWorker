@@ -44,10 +44,14 @@ class AudioWorkletFetchWorker extends AudioWorkletProcessor {
   }
   async sharedWorkerFetch(url = "", options = {}) {
     const { resolve, promise } = promiseWithResolvers();
+    const handleMessage = (e) => {
+      resolve(e.data);
+    }
     if (workerPort) {
-      workerPort.onmessage = (e) => {
-        resolve(e.data);
-      };
+      workerPort.addEventListener("message", handleMessage, {
+        once: true
+      });
+      workerPort.start();
       workerPort.postMessage({ url, options });
     }
     return promise;
