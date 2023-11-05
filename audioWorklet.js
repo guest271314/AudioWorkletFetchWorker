@@ -12,7 +12,7 @@ class AudioWorkletFetchWorker extends AudioWorkletProcessor {
   constructor(options) {
     super(options);
     // There are several ways to do this. We'll use Array here.
-    // We could use a Map or resizable AyyarBuffer, where implemented (not implemented on Firefox 120).
+    // We could use a Map or resizable ArrayBuffer, where implemented (not implemented on Firefox 120).
     this.array = new Array();
     this.offset = 0;
     this.writes = 0;
