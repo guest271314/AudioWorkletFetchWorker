@@ -27,12 +27,12 @@ class AudioWorkletFetchWorker extends AudioWorkletProcessor {
               console.log("Start reading/writing fetch response stream", this.writes);
             },
             write: (value) => {
-              // We might only get 1 to 2 writes on file: protocol
-              ++this.writes;
               for (let i = 0; i < value.length; i++) {
                 this.array[this.array.length] = value[i];
               }
               this.bytesRead += value.length;
+              // We might only get 1 to 2 writes on file: protocol
+              ++this.writes;
             },
             close: () => {
               console.log("Stream closed", this.writes);
